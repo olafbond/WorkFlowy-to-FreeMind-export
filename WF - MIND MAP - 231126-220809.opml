@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<opml version="2.0">
+  <head>
+    <ownerEmail>
+      olafbond@gmail.com
+    </ownerEmail>
+  </head>
+  <body>
+    <outline text="MIND MAP">
+      <outline text="child 1" _note="left">
+        <outline text="grandchild 11">
+          <outline text="grandgrandchild 111" />
+        </outline>
+        <outline text="grandchild 12" />
+        <outline text="grandchild 13" />
+      </outline>
+      <outline text="child 2" _note="right">
+        <outline text="grandchild 21" />
+        <outline text="grandchild 22" />
+      </outline>
+      <outline text="child 3" _note="right">
+        <outline text="grandchild 31" />
+      </outline>
+      <outline text="child 4" _note="right">
+        <outline text="grandchild 41">
+          <outline text="grandgrandchild 411" />
+          <outline text="grandgrandchild 412" />
+        </outline>
+        <outline text="grandchild 42" />
+        <outline text="grandchild 43" />
+      </outline>
+      <outline text="child 5">
+        <outline text="grandchild 51" />
+        <outline text="grandchild 52" />
+      </outline>
+    </outline>
+  </body>
+</opml>
