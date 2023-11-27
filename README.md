@@ -10,3 +10,8 @@ This Python script translates WorkFlowy's *.opml files in a given directory into
 7. Open mm file in Free Mind (or other software).
 
 2023-11-26 - first release.
+2023-11-27 - added:
+- graying completed nodes
+- moving completed nodes to the left
+- Free Mind autostart
+- some code improvements.
