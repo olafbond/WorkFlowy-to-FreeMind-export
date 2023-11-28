@@ -1,12 +1,12 @@
 import os
 import glob
 import time
-# from watchdog.observers import Observer
-# from watchdog.events import PatternMatchingEventHandler
+from watchdog.observers import Observer
+from watchdog.events import PatternMatchingEventHandler
 
 
 WORKING_DIR = 'C:/Users/o1af/Desktop/'
-WATCHDOG = False
+WATCHDOG = True
 MOVE_COMPLETED_LEFT = True
 MINDMAP_AUTOSTART = True
 MINDMAP_COMMAND = 'C:/Program Files (x86)/FreeMind/FreeMind.exe'
@@ -27,7 +27,7 @@ def rem_attr(line):
 
 
 def get_attr(line, substring):
-    # searvhing for a given atributes
+    # searching for a given atribute
     substring = substring + '="'
     attr_start = line.find(substring) + len(substring)
     attr_end = line.find('"', attr_start)
@@ -116,7 +116,23 @@ def write_fm_file(wf_file):
 
 
 def on_created(event):
-    print(f"hey, {event.src_path} has been created!")
+    time.sleep(2)
+    fm_file = write_fm_file(event.src_path)
+    time.sleep(2)
+    # Mind Map program start
+    if MINDMAP_AUTOSTART:
+        cmdline = '"' + os.path.expanduser(MINDMAP_COMMAND) + '" ' + fm_file
+        os.system(cmdline)
+
+
+def on_modified(event):
+    time.sleep(2)
+    fm_file = write_fm_file(event.src_path)
+    time.sleep(2)
+    # Mind Map program start
+    if MINDMAP_AUTOSTART:
+        cmdline = '"' + os.path.expanduser(MINDMAP_COMMAND) + '" ' + fm_file
+        os.system(cmdline)
 
 
 def main():
@@ -124,9 +140,9 @@ def main():
 
     if WATCHDOG:
 
-        '''
-        my_event_handler = PatternMatchingEventHandler('WF*.opml')
+        my_event_handler = PatternMatchingEventHandler(['WF*.opml'], None, True, True)
         my_event_handler.on_created = on_created
+        my_event_handler.on_modified = on_modified
         my_observer = Observer()
         my_observer.schedule(my_event_handler, working_dir, recursive=True)
         my_observer.start()
@@ -136,7 +152,6 @@ def main():
         except KeyboardInterrupt:
             my_observer.stop()
             my_observer.join()
-        '''
     else:
         # for all WF*.opml files in the directory
         wf_files = glob.glob(working_dir+'WF*.opml')
