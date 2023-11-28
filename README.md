@@ -15,3 +15,5 @@ This Python script translates WorkFlowy's *.opml files in a given directory into
 - moving completed nodes to the left
 - Free Mind autostart
 - some code improvements.
+2023-11-28 - added:
+- some code improvements.
